@@ -1,0 +1,22 @@
+[
+  {
+    "uuid": "6ade57d0-aba3-416d-b285-04523fc8c22f",
+    "timestamps": 0,
+    "nombre": "Hamburguesa",
+    "descripcion": "Hamburgesa grande",
+    "codigo": 123,
+    "imagen": "https://cdn3.iconfinder.com/data/icons/street-food-and-food-trucker-1/64/hamburger-fast-food-patty-bread-64.png",
+    "precio": 3890,
+    "stock": 5
+  },
+  {
+    "timestamps": 0,
+    "nombre": "Hamburguesa",
+    "descripcion": "Hamburgesa grande",
+    "codigo": 123,
+    "imagen": "https://cdn3.iconfinder.com/data/icons/street-food-and-food-trucker-1/64/hamburger-fast-food-patty-bread-64.png",
+    "precio": 3890,
+    "stock": 5,
+    "uuid": "407a4420-0fd1-44d3-bb5d-1077672ed061"
+  }
+]

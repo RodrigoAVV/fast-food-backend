@@ -1,0 +1,30 @@
+{
+  "car": [
+    {
+      "uuid": "2ef179f7-e663-4449-b177-3724c4ac6527",
+      "timestamps": 1668727301625
+    }
+  ],
+  "productos": [
+    {
+      "uuid": "f89c6e4f-8705-44d8-b058-a5fde309a5c9",
+      "timestamps": 1668727301625,
+      "nombre": "Hamburguesa",
+      "descripcion": "Hamburgesa grande",
+      "codigo": 123,
+      "imagen": "https://cdn3.iconfinder.com/data/icons/street-food-and-food-trucker-1/64/hamburger-fast-food-patty-bread-64.png",
+      "precio": 3890,
+      "stock": 5
+    },
+    {
+      "nombre": "Hamburguesa",
+      "descripcion": "Hamburgesa grande",
+      "codigo": 123,
+      "imagen": "https://cdn3.iconfinder.com/data/icons/street-food-and-food-trucker-1/64/hamburger-fast-food-patty-bread-64.png",
+      "precio": 3890,
+      "stock": 5,
+      "uuid": "cd9925e3-df1d-4159-9eff-13f9fa3944af",
+      "timestamps": 1668729843062
+    }
+  ]
+}
