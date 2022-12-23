@@ -7,19 +7,55 @@ class ContenedorCar{
         this.Car = Car
     }
 
-    async getCarts(){
+    async createCar(){
         try {
-            let data = false
-            data = await this.Producto.find()
-            if(data){
+            let date = new Date()
+            let newCar = {
+                timestamp: date,
+                products: []
+            }
+            newCar = new this.Car({...newCar})
+            await newCar.save()
+            if(newCar){
                 return{
                     success:true,
-                    data: data
+                    data: newCar
                 }
             }else{
                 return{
-                    success: true,
-                    data: 'No existen productos disponibles'
+                    success: false,
+                    data: 'No se pudo crear este carrito'
+                }
+            }
+        } catch (err) {
+            
+        }
+    }
+
+    async addProductCar(idCar,idProduct){
+        try {
+            //const newProduct = new this.Producto({...newProducto})
+            let car = false
+            let product = false 
+            let flag = false
+            car = await this.Car.findOne({_id: idCar})
+            product = await this.Producto.findOne({_id: idProduct})
+           
+            if(car && product){
+                //console.log(car)
+                car.products.push(product)
+                flag = car.save()
+            }
+            
+            if(flag){
+                return{
+                    success:true,
+                    data: car
+                }
+            }else{
+                return{
+                    success: false,
+                    data: 'No se pudo registrar este producto'
                 }
             }
         } catch (err) {
@@ -30,19 +66,19 @@ class ContenedorCar{
         }
     }
 
-    async saveProduct(newProducto){
+    async getProductsId(idCar){
         try {
-            const newProduct = new this.Producto({...newProducto})
-            await newProduct.save()
-            if(newProduct){
+            let data = false
+            data = await this.Car.findOne({_id: idCar})
+            if(data){
                 return{
                     success:true,
-                    data: newProduct
+                    data: data
                 }
             }else{
                 return{
-                    success: false,
-                    data: 'No se pudo registrar este producto'
+                    success: true,
+                    data: 'No existen productos disponibles'
                 }
             }
         } catch (err) {
@@ -75,14 +111,30 @@ class ContenedorCar{
         }
     }
 
-    async deleteProductId(idProduct){
+    async deleteProductIdCar(idCar,idProd){
         try {
-            const res = await this.Producto.findByIdAndDelete(idProduct)
+            let dataCar = false
+            let dataProduct = false
+            let flag = false
+            
+            dataCar = await this.Car.findOne({_id: idCar})
+            dataProduct = await this.Producto.findOne({_id: idProd})
+            if(dataCar && dataProduct){
+                let carProductAll = dataCar.products
+                let products = []
+                carProductAll.forEach(function(element){
+                    if(element._id.toString() != dataProduct._id.toString()){
+                        products.push(element)
+                    }
+                })
+                dataCar.products = products
+                flag = dataCar.save()
+            }
             //console.log(res)
-            if(res){
+            if(flag){
                 return{
                     success: true,
-                    data: res
+                    data: dataCar
                 }
             }else{
                 return{

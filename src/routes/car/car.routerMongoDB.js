@@ -7,11 +7,48 @@ const { Router } = require('express')
 
 const router = express.Router()
 
-router.get('/',async (req,res,next) => {
+router.post('/',async (req,res,next) => {
     try {
-        data = await dao().productos.getProducts()
-        if(!data.success)(res.status(500).json(data))
-        res.status(200).json(data)
+        data = await dao().car.createCar()
+        if(data.success){
+            (res.status(200).json(data))
+        }else{
+            (res.status(400).json(data))
+        }
+    } catch (err) {
+        return res.status(404).json({
+            error: `Error al crear el carrito ${err}`
+        });
+    }
+})
+
+router.post('/:idCar/:idProduct',async (req,res,next) => {
+    try {
+        const idCar = req.params.idCar
+        const idProduct = req.params.idProduct
+        data = await dao().car.addProductCar(idCar,idProduct)
+        if(data.success){
+            (res.status(200).json(data))
+        }else{
+            (res.status(400).json(data))
+        }
+    } catch (err) {
+        return res.status(404).json({
+            error: `Error al crear el carrito ${err}`
+        });
+    }
+})
+
+router.get('/:idCar/productos',async (req,res,next) => {
+    try {
+        const idCar = req.params.idCar
+        const data = await dao().car.getProductsId(idCar)
+        //console.log(dao)
+        if(data.success){
+            (res.status(200).json(data))
+        }else{
+            (res.status(400).json(data))
+        }
     } catch (err) {
         next(err)
     }
@@ -60,10 +97,12 @@ router.post('/',async (req,res,next) => {
     }
 })
 
-router.delete('/:id',async (req,res,next) => {
+router.delete('/:idCar/productos/:idProd',async (req,res,next) => {
     try {
-        let idProduct = req.params.id
-        let data = await dao().productos.deleteProductId(idProduct)
+        let idCar = req.params.idCar
+        let idProd = req.params.idProd
+        //.log(dao().productos)
+        let data = await dao().car.deleteProductIdCar(idCar,idProd)
         if(data.success){
             (res.status(200).json(data))
         }else{

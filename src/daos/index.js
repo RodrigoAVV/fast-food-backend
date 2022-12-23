@@ -1,6 +1,7 @@
 const ProductoDaoArchivo = require('../daos/productos/ProductoDaoArchivo')
 const ProductoDaoMongoDB = require('../daos/productos/ProductoDaoMongoDB')
 const CarDaoMongoDB = require('../daos/carritos/CarDaoMongoDB')
+//const CarDaoArchivo = require('../daos/carritos/CarDaoArchivo')
 
 const getDao = () => {
     const dao = process.env.DAO
@@ -8,13 +9,13 @@ const getDao = () => {
         case 'file':
             return{
                 productos: new ProductoDaoArchivo(),
-                car: new CarDaoMongoDB()
+                //car: new CarDaoArchivo()
             }    
             break
         case 'mongoDB':
-            
             return{
-                productos: new ProductoDaoMongoDB()
+                productos: new ProductoDaoMongoDB(),
+                car: new CarDaoMongoDB()
             }
             break
     }
