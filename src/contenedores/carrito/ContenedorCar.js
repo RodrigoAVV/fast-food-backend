@@ -173,7 +173,28 @@ class ContenedorCar{
             data:err.message
         }
        }
-        
+    }
+
+    async deleteCarId(idCar){
+        try {
+            const res = await this.Car.findByIdAndDelete(idCar)
+            if(res){
+                return{
+                    success: true,
+                    data: res
+                }
+            }else{
+                return{
+                    success: false,
+                    data: 'No se eliminar el carrito'
+                }
+            }
+        } catch (err) {
+            return{
+                success:false,
+                data:err.message
+            }
+        }
     }
 }
 

@@ -136,9 +136,25 @@ router.put('/:id',async (req,res,next) => {
         }else{
             (res.status(400).json(data))
         }
-    } catch (error) {
+    } catch (err) {
         next(err)
     }
+
+})
+
+router.delete('/:idCar', async (req,res,next) => {
+    try {
+        const idCar = req.params.idCar
+        let data = await dao().car.deleteCarId(idCar)
+    if(data.success){
+        (res.status(200).json(data))
+    }else{
+        (res.status(400).json(data))
+    }
+    } catch (err) {
+        next(err)
+    }
+    
 })
 
 module.exports = router
