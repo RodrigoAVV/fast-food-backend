@@ -6,6 +6,8 @@ const routerMongoDB = require('./products/products.routerMongoDB')
 
 const routerCar = require('./car/car.routerMongoDB')
 
+const routerFirebase = require('./products/productos.routerFirebase')
+
 const router = express.Router()
 
 router.get('/health',(_req, res) => {
@@ -19,5 +21,6 @@ router.get('/health',(_req, res) => {
 .use('/api/productos',productosRouter)
 .use('/api/mongo',routerMongoDB)
 .use('/api/car',routerCar)
+.use('/api/firebase',routerFirebase)
 
 module.exports = router
