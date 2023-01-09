@@ -1,6 +1,6 @@
 const { identity } = require("lodash")
 
-class ContenedorCar{
+class ContenedorCarMongoDB{
     constructor(mongoDB,Producto,Car){
         this.mongoDB = mongoDB
         this.Producto = Producto
@@ -198,4 +198,4 @@ class ContenedorCar{
     }
 }
 
-module.exports = ContenedorCar
+module.exports = ContenedorCarMongoDB

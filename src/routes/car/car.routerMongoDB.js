@@ -42,7 +42,7 @@ router.post('/:idCar/:idProduct',async (req,res,next) => {
 router.get('/:idCar/productos',async (req,res,next) => {
     try {
         const idCar = req.params.idCar
-        const data = await dao().car.getProductsId(idCar)
+        const data = await dao().car.getProductId(idCar)
         //console.log(dao)
         if(data.success){
             (res.status(200).json(data))

@@ -1,4 +1,4 @@
-class ContenedorFirebase{
+class ContenedorFirebaseProducto{
     constructor(queryProductos){
         this.queryProductos = queryProductos
     }
@@ -132,4 +132,4 @@ class ContenedorFirebase{
     }
 }
 
-module.exports = ContenedorFirebase
+module.exports = ContenedorFirebaseProducto

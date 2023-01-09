@@ -95,7 +95,7 @@ class ContenedorArchivo{
         try {
             const products = await fs.promises.readFile(__dirname + this.ruta)
             const productsObject = JSON.parse(products)
-            console.log(productsObject)
+            //console.log(productsObject)
             const newProducts = productsObject.filter(i => i.uuid != uuid)
             await fs.promises.writeFile(__dirname + this.ruta, JSON.stringify(newProducts,null,2))
             return{

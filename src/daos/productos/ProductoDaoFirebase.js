@@ -1,7 +1,7 @@
 const  { queryProductos }  = require('../../DB/firebaseDB')
-const ContenedorFirebase = require('../../contenedores/productos/ContenedorFirebase')
+const ContenedorFirebaseProducto = require('../../contenedores/productos/ContenedorFirebaseProducto')
 
-class ProductoDaoFirebase extends ContenedorFirebase{
+class ProductoDaoFirebase extends ContenedorFirebaseProducto{
     constructor(){
         super(queryProductos)
     }

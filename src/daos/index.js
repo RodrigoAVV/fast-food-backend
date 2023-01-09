@@ -2,6 +2,7 @@ const ProductoDaoArchivo = require('../daos/productos/ProductoDaoArchivo')
 const ProductoDaoMongoDB = require('../daos/productos/ProductoDaoMongoDB')
 const CarDaoMongoDB = require('../daos/carritos/CarDaoMongoDB')
 const ProductoDaoFirebase = require('./productos/ProductoDaoFirebase')
+const CarDaoFirebase = require('./carritos/CarDaoFirebase')
 //const CarDaoArchivo = require('../daos/carritos/CarDaoArchivo')
 
 const getDao = () => {
@@ -21,7 +22,8 @@ const getDao = () => {
             break
         case 'firebase':
             return{
-                productos: new ProductoDaoFirebase()
+                productos: new ProductoDaoFirebase(),
+                car: new  CarDaoFirebase()
             }
     }
 }
